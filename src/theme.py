@@ -206,7 +206,7 @@ def render_bottom_nav(active: str):
         color = COLORS["accent"] if is_active else "#FFFFFF"
         bg = "#2C2C2E" if is_active else "transparent"
         items_html += (
-            f'<a href="{href}" target="_top" style="text-decoration:none;">'
+            f'<a href="{href}" target="_self" style="text-decoration:none;">'
             f'<div style="display:flex;flex-direction:column;align-items:center;'
             f'justify-content:center;width:72px;height:64px;border-radius:28px;'
             f'background:{bg};color:{color};">'
