@@ -17,7 +17,7 @@ Then the real 2026 tournament kicked off mid-project — and the engine had to g
 
 The dashboard isn't a static snapshot. It's built to be re-run as the tournament progresses, narrowing its own uncertainty round by round until nothing is left to simulate at all.
 
-**[🔗 Live app](#)** 
+**[🔗 Live app](#)** *(https://wc26-forecast.streamlit.app/)*
 
 ---
 
