@@ -75,21 +75,25 @@ def group_card_html(letter, teams):
     """
 
 
-# Render all 12 groups in 3 columns using components.html so styles aren't stripped
-col1, col2, col3 = st.columns(3)
-col_map = {0: col1, 1: col2, 2: col3}
+# Create rows of 3 columns to maintain A-B-C order on mobile devices
+for i in range(0, len(letters), 3):
+    cols = st.columns(3)
+    
+    for j in range(3):
+        if i + j < len(letters):
+            letter = letters[i + j]
+            teams = standings[letter]
+            html = f"""
+            <html><body style="margin:0;padding:0;background:transparent;">
+            {group_card_html(letter, teams)}
+            </body></html>
+            """
+            # Height: header (~44) + col-head (~28) + 4 rows (~42 each) + bottom padding
+            height = 44 + 28 + len(teams) * 42 + 20
+            
+            with cols[j]:
+                components.html(html, height=height, scrolling=False)
 
-for idx, letter in enumerate(letters):
-    teams = standings[letter]
-    html = f"""
-    <html><body style="margin:0;padding:0;background:transparent;">
-    {group_card_html(letter, teams)}
-    </body></html>
-    """
-    # Height: header (~44) + col-head (~28) + 4 rows (~42 each) + bottom padding
-    height = 44 + 28 + len(teams) * 42 + 20
-    with col_map[idx % 3]:
-        components.html(html, height=height, scrolling=False)
 
 st.markdown("<br>", unsafe_allow_html=True)
 st.markdown(
